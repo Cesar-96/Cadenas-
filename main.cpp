@@ -29,6 +29,7 @@ void invertir_cade (char *cad)
     }
 }
 
+/*
 void invertir_recursivo (char *cad)
     {
         int tam = sizeof cad;
@@ -40,10 +41,46 @@ void invertir_recursivo (char *cad)
     }
 
 
+    */
+
+    //Cadena-Palindrome
+bool palindrome(char *chain, int tam){
+    char *fin = chain+tam-1;
+    bool val = true;
+    while(--tam && val){
+        if(*chain++ != *fin){
+            val = false;
+        }
+        fin--;
+    }
+    return val;
+}
+
+
+void cambio(char &a, char &b){
+    int t = a;
+    a = b ;
+    b = t ;
+}
+
+
+
+//InvertirRecursivo
+
+void inverR(char *cadena,int tam){
+    char *fin = cadena+--tam;
+    if(cadena<fin){
+        cambio(*cadena,*fin);
+        inverR(++cadena,--tam);
+    }
+}
+
+
+
 
 int main()
 {
-    char cadena[]= "hola";
+    char cadena[]= "oooo";
     char cadena1[]="hola mundo!!!!";
     //char cadena1[] = {'h','o','l','a','\0'};
     //cout << cadena1 <<endl;
@@ -52,9 +89,11 @@ int main()
     //cout<<tam_cadena(cadena1)<<endl;
     //cout<< tam_cadenarecursiva(cadena)<<endl;
     //cout<<tam_recursivap(cadena)<<endl;
-    invertir_recursivo(cadena);
+    //invertir_recursivo(cadena);
     invertir_cade(cadena);
+    cout<<palindrome(cadena,4)<<endl;
     cout <<cadena<<endl;
+    cout <<inverR(cadena1,tam_cadena(cadena1)) <<endl;
 
 }
 
